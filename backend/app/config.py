@@ -46,5 +46,5 @@ def get_settings() -> Settings:
         anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5").strip(),
         judge_model=os.getenv("JUDGE_MODEL", "").strip(),
         allowed_origins=[o.strip() for o in origins.split(",") if o.strip()],
-        max_tokens=int(os.getenv("MAX_TOKENS", "400")),
+        max_tokens=int(os.getenv("MAX_TOKENS", "1200")),
     )
