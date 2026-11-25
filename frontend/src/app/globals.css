@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --paper: #f4f2ed;
+  --ink: #18181b;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotateY(-12deg);
+  }
+  50% {
+    transform: rotateY(12deg);
+  }
+}
+.sway {
+  animation: sway 16s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+.float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+}
