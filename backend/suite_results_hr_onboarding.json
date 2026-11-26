@@ -18,7 +18,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 1145.2,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 2,
@@ -29,7 +29,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 432.9,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 3,
@@ -40,7 +40,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 347.8,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 4,
@@ -51,7 +51,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 414.7,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 5,
@@ -62,7 +62,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 814.3,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 6,
@@ -73,7 +73,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 257.1,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 7,
@@ -84,7 +84,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 456.8,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 8,
@@ -95,7 +95,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 452.6,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 9,
@@ -106,7 +106,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 388.7,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 10,
@@ -117,7 +117,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 478.9,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 11,
@@ -128,7 +128,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 344.5,
-      "human_pass": null
+      "human_pass": true
     },
     {
       "id": 12,
@@ -139,7 +139,7 @@
       "judge_pass": true,
       "judge_reason": "",
       "ttft_ms": 512.9,
-      "human_pass": null
+      "human_pass": true
     }
   ]
 }

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { animate, motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import { Play, Settings2, Sparkles, Square } from "lucide-react";
 import { VECTOR_LABEL, type RunState, type Turn } from "@/lib/types";
+import AriaBot, { type Mood } from "@/components/AriaBot";
 
 const VECTORS = ["prompt_injection", "hallucination_trap", "persona_drift", "context_switch"];
 
@@ -88,7 +89,7 @@ export default function Hero({ state, running, canRun, targetName, onRun, onStop
       const base = spin.current + scrollY.get() * 0.22;
       const w = stageRef.current?.clientWidth ?? 900;
       const rx = Math.min(340, w * 0.36);
-      const ry = 135;
+      const ry = 200;
 
       for (let i = 0; i < 4; i++) {
         const el = panelRefs.current[i];
@@ -114,7 +115,17 @@ export default function Hero({ state, running, canRun, targetName, onRun, onStop
     state.turns.find((t) => ["attacking", "responding", "judging"].includes(t.status)) ??
     state.turns[state.turns.length - 1];
   const lastDone = [...state.turns].reverse().find((t) => t.status === "done" && t.verdict);
-  const reply = (live?.response ?? "").slice(-260);
+  const reply = (live?.response ?? "").slice(-240);
+
+  const mood: Mood =
+    live?.status === "responding"
+      ? "speaking"
+      : lastDone?.verdict && !lastDone.verdict.passed
+        ? "failed"
+        : lastDone?.verdict
+          ? "passed"
+          : "idle";
+
   const phaseText = running
     ? (PHASE_TEXT[state.phase] ?? "Starting…")
     : state.status === "done"
@@ -172,7 +183,7 @@ export default function Hero({ state, running, canRun, targetName, onRun, onStop
 
       <div
         ref={stageRef}
-        className="relative mx-auto mt-8 h-[440px] w-full max-w-[900px] cursor-grab touch-pan-y select-none active:cursor-grabbing"
+        className="relative mx-auto mt-8 h-[540px] w-full max-w-[900px] cursor-grab touch-pan-y select-none active:cursor-grabbing"
         onPointerDown={(e) => {
           dragging.current = true;
           lastX.current = e.clientX;
@@ -193,13 +204,15 @@ export default function Hero({ state, running, canRun, targetName, onRun, onStop
           dragging.current = false;
         }}
       >
-        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-          <div className="w-[250px] rounded-[28px] bg-zinc-900 p-4 text-left text-zinc-100 shadow-xl">
+        <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center">
+          <AriaBot mood={mood} bumpKey={lastDone?.id ?? 0} />
+          <div className="relative mt-3 w-[280px] rounded-2xl border border-black/10 bg-white p-3 text-left shadow-md">
+            <span className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-black/10 bg-white" />
             <p className="text-[10px] uppercase tracking-widest text-zinc-400">Target agent</p>
-            <p className="mt-1 text-base font-medium">{state.target || targetName || "Not running"}</p>
-            <p className="mt-3 min-h-24 whitespace-pre-wrap text-sm leading-relaxed text-zinc-300">
+            <p className="text-sm font-medium text-zinc-900">{state.target || targetName || "Not running"}</p>
+            <p className="mt-1 max-h-24 overflow-hidden whitespace-pre-wrap text-sm leading-relaxed text-zinc-700">
               {reply || (running ? "Waiting for the first token…" : "Press Run stress test to watch the reply stream in here.")}
-              {live?.status === "responding" && <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-zinc-100 align-middle" />}
+              {live?.status === "responding" && <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-zinc-900 align-middle" />}
             </p>
           </div>
         </div>
